@@ -1,0 +1,97 @@
+@import "./config.css";
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+
+
+.root {
+  font-family: 'Raleway', sans-serif;
+  margin: auto;
+  /*width: 50%;*/
+  padding: 5% 1%;
+  text-align: center;
+}
+
+.title {
+  font-size: 8.5vw;
+}
+
+h3{
+  font-size: 3.5vw;
+}
+
+.buttonsBox {
+  margin-top: 40px;
+}
+
+/* Shared */
+.loginBtn {
+  font-weight: bold;
+  margin: 15px auto;
+  display: block;
+  box-sizing: border-box;
+  position: relative;
+  padding: 8px 120px;
+  border: none;
+  text-align: left;
+  line-height: 34px;
+  white-space: nowrap;
+  border-radius: 1.8em;
+  font-size: 16px;
+  color: #FFF;
+}
+
+.loginBtnGoogle {
+  font-weight: bold;
+  margin: 15px auto;
+  display: block;
+  box-sizing: border-box;
+  position: relative;
+  padding: 8px 129px;
+  border: none;
+  text-align: left;
+  line-height: 34px;
+  white-space: nowrap;
+  border-radius: 1.8em;
+  font-size: 16px;
+  color: #FFF;
+}
+
+.loginBtn:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 100%;
+}
+.loginBtn:focus {
+  outline: none;
+}
+.loginBtn:active {
+  box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+}
+
+
+/* Facebook */
+.loginBtnFacebook {
+  background-color: #4C69BA;
+  /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
+}
+
+.loginBtnFacebook:hover,
+.loginBtnFacebook:focus {
+  background-color: #5B7BD5;
+}
+
+
+/* Google */
+.loginBtnGoogle {
+  /*font-family: "Roboto", Roboto, arial, sans-serif;*/
+  background: #DD4B39;
+}
+
+.loginBtnGoogle:hover,
+.loginBtnGoogle:focus {
+  background: #E74B37;
+}

@@ -1,0 +1,38 @@
+
+.containerFluid {
+    padding: 0 6%;
+}
+
+.moviePanel{
+    height: 100%;
+}
+
+.albumCover{
+    height: 150px;
+    width: 150px;
+    border-radius: 10px;
+    margin: 0px 15px 15px 0px;
+}
+
+.rowEqHeight {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+
+h4{
+    background: #78a5ed;
+    border-radius: 0px 4px 4px 0px;
+    padding: 10px 5px;
+}
+
+p {
+    padding: 5px 5px;
+}
+
+/*.column {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+}*/

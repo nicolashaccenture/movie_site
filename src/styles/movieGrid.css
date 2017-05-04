@@ -1,0 +1,20 @@
+.root {
+  font-family: 'Raleway', sans-serif;
+  margin: auto;
+  text-align: center;
+}
+
+.movieTitle{
+    text-align: center;
+    position: relative;
+    top: 50%;
+
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+}

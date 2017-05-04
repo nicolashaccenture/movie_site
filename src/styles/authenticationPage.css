@@ -11,13 +11,29 @@
   text-align: center;
 }
 
-.title {
-  font-size: 8.5vw;
+/* Laptops */
+@media only screen and (min-width: 768px) {
+  .title {
+    font-size: 4.5vw;
+  }
+  h3{
+    font-size: 1.5vw;
+  }
 }
 
-h3{
-  font-size: 3.5vw;
+/* Phones */
+@media only screen and (max-width: 767px) {
+  .title {
+    font-size: 8.5vw;
+  }
+  h3{
+    font-size: 3.5vw;
+  }
 }
+
+
+
+
 
 .buttonsBox {
   margin-top: 40px;

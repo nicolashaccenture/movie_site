@@ -2,9 +2,26 @@
 
 }
 
-.navbar {
+.navbarWembley {
   color: #000;
   background-color: #eee;
   padding: 0 5%;
-  /*margin-bottom: 0;*/
+  margin-bottom: 0x !important;
+}
+
+.navbar-collapse{
+  margin-right: 50%;
+}
+
+.transpButton {
+  background: transparent;
+  border: none !important;
+  font-size:0;
+}
+
+.navcenter {
+    position: absolute;
+    width: 50%;
+    margin-top: 10px;
+    margin-left: 20%;
 }

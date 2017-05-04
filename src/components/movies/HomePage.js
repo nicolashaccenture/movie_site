@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Fetch from 'react-fetch';
 import configureStore from '../../store/configureStore';
 import { Provider } from 'react-redux';
-import AsyncApp from './AsyncApp.js';
+import MovieGridApp from './MovieGridApp.js';
 
 const store = configureStore();
 
@@ -22,7 +22,7 @@ class HomePage extends React.Component {
     return(
       <div className={this.props.css.root}>
         <h1 className="page-header">Most Popular Movies</h1>
-        <AsyncApp />
+        <MovieGridApp />
       </div>
     );
 

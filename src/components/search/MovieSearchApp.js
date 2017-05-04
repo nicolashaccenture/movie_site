@@ -1,92 +1,50 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { connect } from 'react-redux';
-import { selectSubreddit, fetchMoviesIfNeeded, invalidateSubreddit } from '../../actions/movieActions';
 import Posts from '../movies/Posts';
 
 class MovieSearchApp extends React.Component {
-  static get propTypes() {
-    return {
-      selectedSubreddit: PropTypes.string.isRequired,
-      posts: PropTypes.array.isRequired,
-      isFetching: PropTypes.bool.isRequired,
-      lastUpdated: PropTypes.number,
-      dispatch: PropTypes.func.isRequired,
-      searchTypes: PropTypes.any,
-      searchTerm: PropTypes.string
-    };
-  }
 
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleRefreshClick = this.handleRefreshClick.bind(this);
+        this.state = {
+            isFetching: false,
+            items: [],
+        }
+        this.search = this.search.bind(this);
     }
 
     componentDidMount() {
-        const { dispatch, selectedSubreddit } = this.props;
-        dispatch(fetchMoviesIfNeeded(selectedSubreddit,this.props.searchTerm));
+        this.search(this.props.searchTerm);
+
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props.selectedSubreddit !== prevProps.selectedSubreddit) {
-            const { dispatch, selectedSubreddit } = this.props;
-            dispatch(fetchMoviesIfNeeded(selectedSubreddit,this.props.searchTerm));
-        }
+    componentWillReceiveProps(nextProps) {
+
+        this.search(nextProps.searchTerm);
     }
 
-    handleChange(nextSubreddit) {
-        this.props.dispatch(selectSubreddit(nextSubreddit));
-        this.props.dispatch(fetchMoviesIfNeeded(nextSubreddit));
-    }
-
-    handleRefreshClick(e) {
-        e.preventDefault();
-
-        const { dispatch, selectedSubreddit } = this.props;
-        dispatch(invalidateSubreddit(selectedSubreddit));
-        dispatch(fetchMoviesIfNeeded(selectedSubreddit));
+    search(term) {
+        this.setState({ isFetching: true })
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=40c7337963dd284cd2889161ac071f52&query=` + term)
+            .then(response => response.json())
+            .then(json => {
+                this.setState({ isFetching: false, items: json.results })
+            })
     }
 
     render() {
-        const { selectedSubreddit, posts, isFetching, lastUpdated } = this.props;
+        const { isFetching, items } = this.state
+        if (isFetching) { return <p>Loading... </p> }
         return (
             <div>
-                {isFetching && posts.length === 0 &&
-                <h2>Loading...</h2>
-                }
-                {!isFetching && posts.length === 0 &&
-                <h2>Empty.</h2>
-                }
-                {posts.length > 0 &&
                 <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-                    <Posts posts={posts} />
+                    <Posts posts={items} />
                 </div>
-                }
             </div>
         );
     }
+
 }
 
-
-function mapStateToProps(state) {
-    const { selectedSubreddit, postsBySubreddit } = state;
-    const {
-        isFetching,
-        lastUpdated,
-        items: posts
-    } = postsBySubreddit[selectedSubreddit] || {
-        isFetching: true,
-        items: []
-    };
-
-    return {
-        selectedSubreddit,
-        posts,
-        isFetching,
-        lastUpdated
-    };
-}
-
-export default connect(mapStateToProps)(MovieSearchApp);
+export default MovieSearchApp;
